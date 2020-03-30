@@ -1,0 +1,1 @@
+Hard vs symbolic(soft) link (Linux OS)\nhttps://shapeshed.com/unix-ln/#what-is-the-difference-between-a-hard-and-symbolic-link\nHARD LINK -> DATA ON DISC\nSYMBOLIC LINK -> HARD LINK -> DATA ON DISC

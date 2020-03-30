@@ -3,10 +3,10 @@ const fs = require("fs");
 const parseJson = require("parse-json");
 
 const T = new Twit({
-  consumer_key: "1vRvgTAHwp6acG0J2hxkVAVEZ",
-  consumer_secret: "Tiqp3WC0Q2kwjfPhVZiJ8kyMSS5otiuzHlWeqqW8L74RfpSaHr",
-  access_token: "855167353709109251-3aR9w4lKr2eox5Ydil5P48ETiLaayWt",
-  access_token_secret: "BpuYAd9aWI2kO43xcM7s9aECGumhNACOAcX4xkzHim861",
+  consumer_key: "",
+  consumer_secret: "",
+  access_token: "",
+  access_token_secret: "",
   timeout_ms: 60 * 1000, // optional HTTP request timeout to apply to all requests.
   strictSSL: true // optional - requires SSL certificates to be valid.
 });
@@ -53,12 +53,18 @@ function getListOfTweetsToSchedule() {
   );
 }
 
+function getListOfTweetsToScheduleToday() {
+  return getListOfTweets().filter(
+    tweet => tweet.includes(getTodayDate())
+  );
+}
+
 function convertBuffersToJSONs(tweetBuffers) {
   return tweetBuffers.map(buffer => parseJson(buffer.toString()));
 }
 
 async function readTweetsToSchedule() {
-  const tweets = getListOfTweetsToSchedule().map(getTweetByFilename);
+  const tweets = getListOfTweetsToScheduleToday().map(getTweetByFilename);
 
   return Promise.all(tweets)
     .then(tweetBuffers => {

@@ -1,0 +1,7 @@
+TODO list:
+- create simple API for scheduling tweets
+    - include adding hashtags
+    - include adding links
+- keep tweets in database
+- schedule running tweets at specific hour
+- get rid of cron (use service daemon instead)
